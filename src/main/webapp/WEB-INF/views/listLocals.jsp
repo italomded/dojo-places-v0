@@ -37,7 +37,6 @@
     </c:forEach>
     </tbody>
 </table>
-
 <script>
     document.querySelectorAll(".delete-action").forEach((aRef => {
         aRef.addEventListener("click", async (event) => {
