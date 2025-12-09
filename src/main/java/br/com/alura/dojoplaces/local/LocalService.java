@@ -35,4 +35,8 @@ public class LocalService {
         local.setDistrict(editLocalForm.getDistrict());
         local.setCity(editLocalForm.getCity());
     }
+
+    public void deleteById(Long id) {
+        localRepository.deleteById(id);
+    }
 }

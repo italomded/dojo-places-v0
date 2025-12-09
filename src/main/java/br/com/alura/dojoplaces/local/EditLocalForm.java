@@ -6,6 +6,9 @@ import jakarta.validation.constraints.Pattern;
 import org.hibernate.validator.constraints.Length;
 
 public class EditLocalForm {
+    @NotNull
+    Long id;
+
     @NotBlank
     @Length(max = 100)
     private String name;
@@ -22,10 +25,19 @@ public class EditLocalForm {
     public EditLocalForm() {}
 
     public EditLocalForm(Local local) {
+        this.id = local.getId();
         this.name = local.getName();
         this.code = local.getCode();
         this.district = local.getDistrict();
         this.city = local.getCity();
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getName() {

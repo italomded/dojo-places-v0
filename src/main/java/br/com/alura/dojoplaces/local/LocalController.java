@@ -11,15 +11,24 @@ import org.springframework.web.bind.annotation.*;
 public class LocalController {
     private final LocalService localService;
     private final CreateLocalFormCodeValidator createLocalFormCodeValidator;
+    private final EditLocalFormCodeValidator editLocalFormCodeValidator;
 
-    public LocalController(LocalService localService, CreateLocalFormCodeValidator createLocalFormCodeValidator) {
+    public LocalController(LocalService localService,
+                           CreateLocalFormCodeValidator createLocalFormCodeValidator,
+                           EditLocalFormCodeValidator editLocalFormCodeValidator) {
         this.localService = localService;
         this.createLocalFormCodeValidator = createLocalFormCodeValidator;
+        this.editLocalFormCodeValidator = editLocalFormCodeValidator;
     }
 
     @InitBinder("createLocalForm")
-    public void initBinder(WebDataBinder binder) {
+    public void initBinderCreate(WebDataBinder binder) {
         binder.addValidators(createLocalFormCodeValidator);
+    }
+
+    @InitBinder("editLocalForm")
+    public void initBinderEdit(WebDataBinder binder) {
+        binder.addValidators(editLocalFormCodeValidator);
     }
 
     @GetMapping("local")
@@ -62,6 +71,12 @@ public class LocalController {
             return "/editLocal";
         }
         localService.editLocal(id, editLocalForm);
+        return "redirect:/local";
+    }
+
+    @PostMapping("local/deletar/{id}")
+    public String deleteLocal(@PathVariable final Long id) {
+        localService.deleteById(id);
         return "redirect:/local";
     }
 }

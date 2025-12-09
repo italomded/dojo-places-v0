@@ -3,11 +3,13 @@
 
 
 <h1>Cadastrar local</h1>
+<a href="/local">Voltar</a>
 
 <br/>
 <br/>
 
 <form:form modelAttribute="editLocalForm" method="post" action="/local/editar/${id}">
+    <form:input type="hidden" path="id"/>
 
     <label>Nome:</label>
     <form:input path="name"/>
@@ -41,6 +43,5 @@
     <br/>
     <br/>
 
-    <form:button>Cadastrar</form:button>
-
+    <form:button>Editar</form:button>
 </form:form>

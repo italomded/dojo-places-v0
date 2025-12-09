@@ -3,6 +3,7 @@
 
 
 <h1>Cadastrar local</h1>
+<a href="/local">Voltar</a>
 
 <br/>
 <br/>
