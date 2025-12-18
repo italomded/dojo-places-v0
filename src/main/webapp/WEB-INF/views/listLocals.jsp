@@ -31,24 +31,21 @@
             <td>${local.daysSinceLastUpdate}</td>
             <td>
                 <a href="/local/editar/${local.id}">Editar</a>
-                <a class="delete-action" href="#" data-local-id="${local.id}">Deletar</a>
+                <a href="#" onclick="deleteLocal(${local.id})" data-local-id="${local.id}">Deletar</a>
             </td>
         </tr>
     </c:forEach>
     </tbody>
 </table>
 <script>
-    document.querySelectorAll(".delete-action").forEach((aRef => {
-        aRef.addEventListener("click", async (event) => {
-            const id = event.target.dataset.localId;
-            const deleteConfirmed = window.confirm("Tem certeza que deseja deletar o Local de ID [" + id + "]?");
-            if (!deleteConfirmed) return;
-            await fetch(
-                "local/deletar/" + id,
-                {
-                    method: "POST"
-                }
-            ).then(_ => { window.location = "/local"})
-        })
-    }));
+    async function deleteLocal(id) {
+        const deleteConfirmed = window.confirm("Tem certeza que deseja deletar o Local de ID [" + id + "]?");
+        if (!deleteConfirmed) return;
+        await fetch(
+            "local/deletar/" + id,
+            {
+                method: "POST"
+            }
+        ).then(_ => { window.location = "/local"})
+    }
 </script>
