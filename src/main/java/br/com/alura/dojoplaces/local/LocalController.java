@@ -1,6 +1,7 @@
 package br.com.alura.dojoplaces.local;
 
 import jakarta.validation.Valid;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -41,6 +42,14 @@ public class LocalController {
     public String createLocal(final CreateLocalForm createLocalForm, final Model model) {
         model.addAttribute("createLocalForm", createLocalForm);
         return "/createLocal";
+    }
+
+    @PostMapping("local/cadastro/rest")
+    public ResponseEntity<Void> createLocalRest(
+            @Valid final CreateLocalForm createLocalForm
+    ) {
+        localService.createLocal(createLocalForm);
+        return ResponseEntity.ok().build();
     }
 
     @PostMapping("local/cadastro")

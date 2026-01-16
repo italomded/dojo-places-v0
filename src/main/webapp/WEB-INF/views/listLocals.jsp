@@ -5,7 +5,7 @@
 
 <h1>Listar locais</h1>
 
-<a href="local/cadastro">Cadastrar local</a>
+<a href="${pageContext.request.contextPath}/local/cadastro">Cadastrar local</a>
 
 <br/>
 <br/>
@@ -30,7 +30,7 @@
             <td>${local.creationDate}</td>
             <td>${local.daysSinceLastUpdate}</td>
             <td>
-                <a href="/local/editar/${local.id}">Editar</a>
+                <a href="${pageContext.request.contextPath}/local/editar/${local.id}">Editar</a>
                 <a href="#" onclick="deleteLocal(${local.id})" data-local-id="${local.id}">Deletar</a>
             </td>
         </tr>
@@ -42,7 +42,7 @@
         const deleteConfirmed = window.confirm("Tem certeza que deseja deletar o Local de ID [" + id + "]?");
         if (!deleteConfirmed) return;
         await fetch(
-            "local/deletar/" + id,
+            "${pageContext.request.contextPath}/local/deletar/" + id,
             {
                 method: "POST"
             }

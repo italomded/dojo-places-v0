@@ -1,6 +1,6 @@
 <%@ tag language="java" pageEncoding="UTF-8" %>
 
-<%@ attribute name="distrinctId" required="true" type="java.lang.String" %>
+<%@ attribute name="districtId" required="true" type="java.lang.String" %>
 <%@ attribute name="cityId" required="true" type="java.lang.String" %>
 
 
@@ -38,7 +38,7 @@
             return;
         }
 
-        document.querySelector("#${distrinctId}").value = data["bairro"];
+        document.querySelector("#${districtId}").value = data["bairro"];
         document.querySelector("#${cityId}").value = data["localidade"];
     }
 

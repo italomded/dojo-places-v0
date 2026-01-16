@@ -3,12 +3,12 @@
 <%@ taglib tagdir="/WEB-INF/tags" prefix="tags" %>
 
 <h1>Cadastrar local</h1>
-<a href="/local">Voltar</a>
+<a href="${pageContext.request.contextPath}/local">Voltar</a>
 
 <br/>
 <br/>
 
-<form:form modelAttribute="createLocalForm" method="post" action="/local/cadastro">
+<form:form modelAttribute="createLocalForm" method="post" action="${pageContext.request.contextPath}/local/cadastro">
 
     <label>Nome:</label>
     <form:input path="name"/>
@@ -26,7 +26,7 @@
     <br/>
     <br/>
 
-    <tags:cepSearch distrinctId="district" cityId="city"/>
+    <tags:cepSearch districtId="district" cityId="city"/>
 
     <br/>
     <br/>
