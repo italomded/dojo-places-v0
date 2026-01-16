@@ -3,12 +3,18 @@
 <%@ attribute name="districtId" required="true" type="java.lang.String" %>
 <%@ attribute name="cityId" required="true" type="java.lang.String" %>
 
-
-<section style="border: 1px dotted; padding: 1rem; width: 20rem">
-    <p>Busque pelo CEP para preencher o bairro e cidade.</p>
-    <label for="cep-field">CEP:</label>
-    <input id="cep-field" type="number" onfocusout="cepSearch(this.value)">
-    <span id="cep-error" style="display: none; color: red;"></span>
+<section class="card">
+    <div class="card-body">
+        <h5 class="card-title">ViaCEP</h5>
+        <h6 class="card-subtitle mb-2 text-body-secondary">Busque pelo CEP para preencher o bairro e cidade.</h6>
+        <div class="col-md-4">
+            <div class="input-group has-validation">
+                <label for="cep-field" class="input-group-text" id="cep-field-label">CEP</label>
+                <input id="cep-field" type="number" class="form-control" onfocusout="cepSearch(this.value)">
+                <div id="cep-error" class="invalid-feedback"></div>
+            </div>
+        </div>
+    </div>
 </section>
 
 <script>

@@ -2,51 +2,36 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib tagdir="/WEB-INF/tags" prefix="tags" %>
 
-<h1>Cadastrar local</h1>
-<a href="${pageContext.request.contextPath}/local">Voltar</a>
+<tags:dojoHead/>
+<tags:dojoHeader title="Cadastrar local"/>
+<tags:dojoBody>
+    <a class="btn btn-warning mb-3" href="${pageContext.request.contextPath}/local">Voltar</a>
+    <form:form modelAttribute="createLocalForm" method="post"
+               action="${pageContext.request.contextPath}/local/cadastro">
 
-<br/>
-<br/>
+        <label class="form-label">Nome:</label>
+        <form:input cssClass="form-control" path="name"/>
+        <form:errors path="name" cssStyle="color: red"/>
 
-<form:form modelAttribute="createLocalForm" method="post" action="${pageContext.request.contextPath}/local/cadastro">
 
-    <label>Nome:</label>
-    <form:input path="name"/>
-    <br/>
-    <form:errors path="name" cssStyle="color: red"/>
+        <label class="form-label mt-2">Codigo:</label>
+        <form:input cssClass="form-control" path="code"/>
+        <form:errors path="code" cssStyle="color: red"/>
 
-    <br/>
-    <br/>
 
-    <label>Codigo:</label>
-    <form:input path="code"/>
-    <br/>
-    <form:errors path="code" cssStyle="color: red"/>
+        <br/>
+        <tags:cepSearch districtId="district" cityId="city"/>
+        <br/>
 
-    <br/>
-    <br/>
+        <label class="form-label mt-2">Bairro:</label>
+        <form:input cssClass="form-control" path="district"/>
+        <form:errors path="district" cssStyle="color: red"/>
 
-    <tags:cepSearch districtId="district" cityId="city"/>
 
-    <br/>
-    <br/>
+        <label class="form-label mt-2">Cidade:</label>
+        <form:input cssClass="form-control" path="city"/>
+        <form:errors path="city" cssStyle="color: red"/>
 
-    <label>Bairro:</label>
-    <form:input path="district"/>
-    <br/>
-    <form:errors path="district" cssStyle="color: red"/>
-
-    <br/>
-    <br/>
-
-    <label>Cidade:</label>
-    <form:input path="city"/>
-    <br/>
-    <form:errors path="city" cssStyle="color: red"/>
-
-    <br/>
-    <br/>
-
-    <form:button>Cadastrar</form:button>
-
-</form:form>
+        <button class="btn btn-primary mt-3">Cadastrar</button>
+    </form:form>
+</tags:dojoBody>
