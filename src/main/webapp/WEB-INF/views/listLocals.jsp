@@ -4,18 +4,7 @@
 <%@ taglib tagdir="/WEB-INF/tags" prefix="tags" %>
 
 <tags:dojoHead>
-    <script>
-        async function deleteLocal(id) {
-            const deleteConfirmed = window.confirm("Tem certeza que deseja deletar o Local de ID [" + id + "]?");
-            if (!deleteConfirmed) return;
-            await fetch(
-                "${pageContext.request.contextPath}/local/deletar/" + id,
-                {
-                    method: "POST"
-                }
-            ).then(_ => { window.location = "/local"})
-        }
-    </script>
+    <script src="${pageContext.request.contextPath}/js/listLocals.js"></script>
 </tags:dojoHead>
 <tags:dojoHeader title="Listar locais"/>
 <tags:dojoBody>
@@ -41,10 +30,29 @@
                 <td>${local.daysSinceLastUpdate}</td>
                 <td>
                     <a class="btn btn-warning" href="${pageContext.request.contextPath}/local/editar/${local.id}">Editar</a>
-                    <a class="btn btn-danger" href="#" onclick="deleteLocal(${local.id})" data-local-id="${local.id}">Deletar</a>
+                    <a class="btn btn-danger" href="#" onclick="showDeleteModal(${local.id})">Deletar</a>
                 </td>
             </tr>
         </c:forEach>
         </tbody>
     </table>
+
+    <!-- Modal -->
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Confirmar ação</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Tem certeza que deseja deletar o local?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button id="confirmDeleteButton" type="button" class="btn btn-danger">Confirmar</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </tags:dojoBody>

@@ -32,7 +32,7 @@ public class LocalController {
         binder.addValidators(editLocalFormCodeValidator);
     }
 
-    @GetMapping("local")
+    @GetMapping(path = {"local", "/"})
     public String listLocals(final Model model) {
         model.addAttribute("locals", localService.listLocals());
         return "/listLocals";

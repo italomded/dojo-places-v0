@@ -11,13 +11,11 @@
 
         <label class="form-label">Nome:</label>
         <form:input cssClass="form-control" path="name"/>
-        <form:errors path="name" cssStyle="color: red"/>
-
+        <form:errors path="name" cssStyle="color: red; display: block"/>
 
         <label class="form-label mt-2">Codigo:</label>
         <form:input cssClass="form-control" path="code"/>
-        <form:errors path="code" cssStyle="color: red"/>
-
+        <form:errors path="code" cssStyle="color: red; display: block"/>
 
         <br/>
         <tags:cepSearch districtId="district" cityId="city"/>
@@ -25,12 +23,11 @@
 
         <label class="form-label mt-2">Bairro:</label>
         <form:input cssClass="form-control" path="district"/>
-        <form:errors path="district" cssStyle="color: red"/>
-
+        <form:errors path="district" cssStyle="color: red; display: block"/>
 
         <label class="form-label mt-2">Cidade:</label>
         <form:input cssClass="form-control" path="city"/>
-        <form:errors path="city" cssStyle="color: red"/>
+        <form:errors path="city" cssStyle="color: red; display: block"/>
 
         <button class="btn btn-primary mt-3">Cadastrar</button>
     </form:form>
